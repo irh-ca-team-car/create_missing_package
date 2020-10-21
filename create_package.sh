@@ -1,5 +1,7 @@
 echo "package name :$1"
 
+cd /tmp
+
 mkdir -p "workdir/$1/DEBIAN"
 echo "Package: $1">"workdir/$1/DEBIAN/control"
 echo "Version: 0.0.1">>"workdir/$1/DEBIAN/control"
@@ -14,3 +16,5 @@ echo "Description: Dummy">>"workdir/$1/DEBIAN/control"
 
 dpkg -b "workdir/$1" "workdir/$1.deb"
 sudo dpkg -i "workdir/$1.deb"
+
+rm workdir -rd
